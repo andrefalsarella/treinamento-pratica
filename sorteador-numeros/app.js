@@ -6,6 +6,12 @@ function sortear(){
     let sorteados = [];
     let numero;
 
+    if(de >= ate){
+        alert('O NÚMERO MÍNIMO É MAIOR QUE O NÚMERO MÁXIMO!');
+        reiniciar();
+        return;
+    }
+
     for(let i = 0; i < quantidade; i++){
         numero = numeroAleatorio(de, ate);
 
