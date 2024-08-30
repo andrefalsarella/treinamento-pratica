@@ -1,8 +1,17 @@
 let amigos = [];
 
 function adicionar(){
-    let listaAmigos = document.getElementById('lista-amigos');
     let amigo = document.getElementById('nome-amigo');
+    if(amigo.value == ''){
+        alert('Informe o nome do amigo');
+        return;
+    }
+    if(amigos.includes(amigo.value)){
+        alert('Nome já adicionado!');
+        return;
+    }
+    
+    let listaAmigos = document.getElementById('lista-amigos');
     amigos.push(amigo.value);
 
     if(listaAmigos.textContent == ''){
@@ -15,14 +24,18 @@ function adicionar(){
 }
 
 function sortear(){
-    embaralhar(amigos);
-    let sorteio = document.getElementById('lista-sorteio');
+    if(amigos.length < 4){
+        alert('Adicione pelo menos 4 amigos');
+    } else{
+        embaralhar(amigos);
+        let sorteio = document.getElementById('lista-sorteio');
 
-    for (let i = 0; i < amigos.length; i++){
-        if(i == amigos.length - 1){
-            sorteio.innerHTML = sorteio.innerHTML + amigos[i] + ' --> ' + amigos[0] + '<br/>';
-        } else{
-            sorteio.innerHTML = sorteio.innerHTML + amigos[i] + ' --> ' + amigos[i + 1] + '<br/>';
+        for (let i = 0; i < amigos.length; i++){
+            if(i == amigos.length - 1){
+                sorteio.innerHTML = sorteio.innerHTML + amigos[i] + ' --> ' + amigos[0] + '<br/>';
+            } else{
+                sorteio.innerHTML = sorteio.innerHTML + amigos[i] + ' --> ' + amigos[i + 1] + '<br/>';
+            }
         }
     }
 }
